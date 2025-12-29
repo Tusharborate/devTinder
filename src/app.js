@@ -1,11 +1,22 @@
 const express = require("express");
-
 const app = express();
 
-app.listen(7777, function () {
-  console.log("Server is running at port 3000");
+app.get("/test", function (req, res) {
+  res.send("GET is working");
 });
 
-app.use("/test", (req, res) => {
-  res.send("Hello From Server 2222");
+app.post("/test", function (req, res) {
+  res.send("POST is working");
+});
+
+app.delete("/test", function (req, res) {
+  res.send("Data Deleted Successfully");
+});
+
+app.use("/", (req, res) => {
+  res.send("Hello from the server!!");
+});
+
+app.listen(7777, () => {
+  console.log("Server is successfully listening on port 7777");
 });
